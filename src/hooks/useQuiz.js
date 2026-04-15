@@ -112,10 +112,13 @@ export function useQuiz(config, onFinish) {
         const next = current + 1
 	currentRef.current = next
 	setCurrent(next)
+	setSelected(null)
+	setTimeLeft(15)
       }
     }, 1000)
   }
 
-  return { questions, current, score, selected, timeLeft, loading, error, streak, comboMsg, handleAnswer }
   handleAnswerRef.current = handleAnswer
+
+  return { questions, current, score, selected, timeLeft, loading, error, streak, comboMsg, handleAnswer }
 }

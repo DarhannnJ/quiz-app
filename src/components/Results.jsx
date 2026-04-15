@@ -69,10 +69,10 @@ export default function Results({ result, onRestart, onHistory, T }) {
           ))}
         </div>
 
-        <button onClick={onRestart} className="w-full bg-[#6C63FF] hover:bg-[#5348b5] text-white py-2.5 rounded-xl text-sm font-medium mb-2 transition-colors">
+        <button onClick={onHistory} className="w-full bg-[#6C63FF] hover:bg-[#5348b5] text-white py-2.5 rounded-xl text-sm font-medium mb-2 transition-colors">
           Попробовать снова
         </button>
-        <button onClick={onHistory} className="w-full border border-[#ebe8ff] text-[#6C63FF] hover:bg-[#f0eeff] py-2.5 rounded-xl text-sm font-medium transition-colors">
+        <button onClick={onRestart} className="w-full border border-[#ebe8ff] text-[#6C63FF] hover:bg-[#f0eeff] py-2.5 rounded-xl text-sm font-medium transition-colors">
           На главную
         </button>
       </div>
