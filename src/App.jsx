@@ -39,26 +39,7 @@ export default function App() {
         </div>
 
         {/* Десктоп топбар — всегда светлый */}
-        <div className="hidden md:flex items-center justify-between px-6 py-3 bg-white border-b border-[#ebe8ff]">
-          <span className="text-sm text-[#2d2b55]">👋 Привет, <strong>{userName}</strong></span>
-          <div className="flex items-center gap-2">
-            <button onClick={() => handleTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="text-sm px-2 py-1 bg-[#f0eeff] rounded-lg text-[#5348b5] hover:bg-[#e4e0ff] transition-colors">
-              {theme === 'dark' ? '☀️' : '🌙'}
-            </button>
-            <div className="flex gap-1 bg-[#f0eeff] rounded-lg p-1">
-              <button onClick={() => setLang('ru')}
-                className={`px-2 py-1 rounded text-xs font-medium transition-colors ${lang === 'ru' ? 'bg-[#6C63FF] text-white' : 'text-[#8882b5] hover:bg-[#e4e0ff]'}`}>
-                RU
-              </button>
-              <button onClick={() => setLang('en')}
-                className={`px-2 py-1 rounded text-xs font-medium transition-colors ${lang === 'en' ? 'bg-[#6C63FF] text-white' : 'text-[#8882b5] hover:bg-[#e4e0ff]'}`}>
-                EN
-              </button>
-            </div>
-          </div>
-        </div>
-
+        
         <main className="flex-1 md:bg-[#f8f7ff] md:text-[#2d2b55]">
           {screen === 'home' && (
             <CategorySelect lang={lang} T={T} userName={userName}
