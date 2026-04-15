@@ -3,6 +3,7 @@ import CategorySelect from './components/CategorySelect'
 import Quiz from './components/Quiz'
 import Results from './components/Results'
 import History from './components/History'
+import Sidebar from './components/Sidebar'
 import { useProfile, NameModal, Header, ProfileScreen } from './components/Profile'
 
 export default function App() {
@@ -25,24 +26,58 @@ export default function App() {
   return (
     <div className={`min-h-screen ${T.bg} ${T.text}`}>
       {!userName && <NameModal onSave={saveName} T={T} />}
-      <Header userName={userName} lang={lang} setLang={setLang} onLogout={logout}
-        onProfile={() => setScreen('profile')} theme={theme} setTheme={handleTheme} T={T} />
 
-      {screen === 'home' && (
-        <CategorySelect lang={lang} T={T} onStart={(config) => { setQuizConfig({...config, lang}); setScreen('quiz') }} />
-      )}
-      {screen === 'quiz' && (
-        <Quiz config={quizConfig} T={T} onFinish={(result) => { setLastResult(result); setScreen('results') }} />
-      )}
-      {screen === 'results' && (
-        <Results result={lastResult} lang={lang} T={T} onRestart={() => setScreen('home')} onHistory={() => setScreen('history')} />
-      )}
-      {screen === 'history' && (
-        <History lang={lang} T={T} onBack={() => setScreen('home')} />
-      )}
-      {screen === 'profile' && (
-        <ProfileScreen userName={userName} T={T} onBack={() => setScreen('home')} onLogout={logout} />
-      )}
+      <Sidebar screen={screen} setScreen={setScreen} onLogout={logout} userName={userName} T={T} />
+
+      <div className="md:ml-56 flex flex-col min-h-screen">
+        <div className="md:hidden">
+          <Header userName={userName} lang={lang} setLang={setLang} onLogout={logout}
+            onProfile={() => setScreen('profile')} theme={theme} setTheme={handleTheme} T={T} />
+        </div>
+
+        {/* Десктоп топбар */}
+        <div className={`hidden md:flex items-center justify-between px-6 py-3 ${T.card} border-b ${T.border}`}>
+          <span className={`text-sm ${T.sub}`}>👋 Привет, <span className="font-semibold">{userName}</span></span>
+          <div className="flex items-center gap-2">
+            <button onClick={() => handleTheme(theme === 'dark' ? 'light' : 'dark')}
+              className={`text-sm px-2 py-1 ${T.card} border ${T.border} rounded-lg ${T.cardHover} transition-colors`}>
+              {theme === 'dark' ? '☀️' : '🌙'}
+            </button>
+            <div className={`flex gap-1 ${T.card} border ${T.border} rounded-lg p-1`}>
+              <button onClick={() => setLang('ru')}
+                className={`px-2 py-1 rounded text-xs font-medium transition-colors ${lang === 'ru' ? 'bg-[#6C63FF] text-white' : `${T.sub} ${T.cardHover}`}`}>
+                RU
+              </button>
+              <button onClick={() => setLang('en')}
+                className={`px-2 py-1 rounded text-xs font-medium transition-colors ${lang === 'en' ? 'bg-[#6C63FF] text-white' : `${T.sub} ${T.cardHover}`}`}>
+                EN
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <main className="flex-1 md:bg-[#f8f7ff] md:text-[#2d2b55]">
+          {screen === 'home' && (
+            <CategorySelect lang={lang} T={T} userName={userName}
+              onStart={(config) => { setQuizConfig({...config, lang}); setScreen('quiz') }} />
+          )}
+          {screen === 'quiz' && (
+            <Quiz config={quizConfig} T={T}
+              onFinish={(result) => { setLastResult(result); setScreen('results') }} />
+          )}
+          {screen === 'results' && (
+            <Results result={lastResult} lang={lang} T={T}
+              onRestart={() => setScreen('home')} onHistory={() => setScreen('history')} />
+          )}
+          {screen === 'history' && (
+            <History lang={lang} T={T} onBack={() => setScreen('home')} />
+          )}
+          {screen === 'profile' && (
+            <ProfileScreen userName={userName} T={T}
+              onBack={() => setScreen('home')} onLogout={logout} />
+          )}
+        </main>
+      </div>
     </div>
   )
 }
