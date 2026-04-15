@@ -16,7 +16,8 @@ export function useQuiz(config, onFinish) {
   const [timePerQuestion, setTimePerQuestion] = useState([])
   const questionStartTime = useRef(Date.now())
   const timerRef = useRef(null)
-
+  const startTime = useRef(Date.now())
+  
   useEffect(() => {
     if (config.lang === 'ru') {
       const key = `${config.category}_${config.difficulty}`
@@ -98,12 +99,13 @@ export function useQuiz(config, onFinish) {
       setComboMsg('')
       if (current + 1 >= questions.length) {
         onFinish({
-          score: score + (isCorrect ? 1 : 0),
-          total: questions.length,
-          config,
-          maxStreak: Math.max(maxStreak, isCorrect ? streak + 1 : 0),
-          timePerQuestion: [...timePerQuestion, elapsed]
-        })
+  	  score: score + (isCorrect ? 1 : 0),
+  	  total: questions.length,
+  	  config,
+  	  maxStreak: Math.max(maxStreak, isCorrect ? streak + 1 : 0),
+  	  timePerQuestion: [...timePerQuestion, elapsed],
+  	  totalTime: Math.round((Date.now() - startTime.current) / 1000)
+	})
       } else {
         setCurrent(c => c + 1)
         setSelected(null)

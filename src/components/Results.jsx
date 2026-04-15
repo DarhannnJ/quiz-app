@@ -17,6 +17,9 @@ export default function Results({ result, onRestart, onHistory }) {
       <h2 className="text-2xl font-bold mb-1">Результат</h2>
       <p className="text-5xl font-bold text-blue-400 mb-1">{result.score}/{result.total}</p>
       <p className="text-gray-400 mb-2">{percent}% правильных</p>
+      {result.totalTime && (
+  	<p className="text-gray-400 mb-4">⏱ Время прохождения: {result.totalTime}с</p>
+      )}
 
       {result.maxStreak > 0 && (
         <p className="text-yellow-400 font-medium mb-6">🔥 Макс. серия: {result.maxStreak} подряд</p>
