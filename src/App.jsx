@@ -27,29 +27,32 @@ export default function App() {
     <div className={`min-h-screen ${T.bg} ${T.text}`}>
       {!userName && <NameModal onSave={saveName} T={T} />}
 
-      <Sidebar screen={screen} setScreen={setScreen} onLogout={logout} userName={userName} T={T} />
+      {/* Сайдбар — только десктоп, всегда светлый */}
+      <Sidebar screen={screen} setScreen={setScreen} onLogout={logout} userName={userName} />
 
       <div className="md:ml-56 flex flex-col min-h-screen">
+
+        {/* Хедер — только мобилка */}
         <div className="md:hidden">
           <Header userName={userName} lang={lang} setLang={setLang} onLogout={logout}
             onProfile={() => setScreen('profile')} theme={theme} setTheme={handleTheme} T={T} />
         </div>
 
-        {/* Десктоп топбар */}
-        <div className={`hidden md:flex items-center justify-between px-6 py-3 ${T.card} border-b ${T.border}`}>
-          <span className={`text-sm ${T.sub}`}>👋 Привет, <span className="font-semibold">{userName}</span></span>
+        {/* Десктоп топбар — всегда светлый */}
+        <div className="hidden md:flex items-center justify-between px-6 py-3 bg-white border-b border-[#ebe8ff]">
+          <span className="text-sm text-[#2d2b55]">👋 Привет, <strong>{userName}</strong></span>
           <div className="flex items-center gap-2">
             <button onClick={() => handleTheme(theme === 'dark' ? 'light' : 'dark')}
-              className={`text-sm px-2 py-1 ${T.card} border ${T.border} rounded-lg ${T.cardHover} transition-colors`}>
+              className="text-sm px-2 py-1 bg-[#f0eeff] rounded-lg text-[#5348b5] hover:bg-[#e4e0ff] transition-colors">
               {theme === 'dark' ? '☀️' : '🌙'}
             </button>
-            <div className={`flex gap-1 ${T.card} border ${T.border} rounded-lg p-1`}>
+            <div className="flex gap-1 bg-[#f0eeff] rounded-lg p-1">
               <button onClick={() => setLang('ru')}
-                className={`px-2 py-1 rounded text-xs font-medium transition-colors ${lang === 'ru' ? 'bg-[#6C63FF] text-white' : `${T.sub} ${T.cardHover}`}`}>
+                className={`px-2 py-1 rounded text-xs font-medium transition-colors ${lang === 'ru' ? 'bg-[#6C63FF] text-white' : 'text-[#8882b5] hover:bg-[#e4e0ff]'}`}>
                 RU
               </button>
               <button onClick={() => setLang('en')}
-                className={`px-2 py-1 rounded text-xs font-medium transition-colors ${lang === 'en' ? 'bg-[#6C63FF] text-white' : `${T.sub} ${T.cardHover}`}`}>
+                className={`px-2 py-1 rounded text-xs font-medium transition-colors ${lang === 'en' ? 'bg-[#6C63FF] text-white' : 'text-[#8882b5] hover:bg-[#e4e0ff]'}`}>
                 EN
               </button>
             </div>
