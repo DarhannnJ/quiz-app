@@ -8,8 +8,7 @@ export default function Sidebar({ screen, setScreen, onLogout, userName }) {
   return (
     <aside className="hidden md:flex flex-col w-56 min-h-screen fixed left-0 top-0 bg-white border-r border-[#ebe8ff]">
       <div className="flex items-center gap-2 px-4 py-5 border-b border-[#ebe8ff]">
-        <div className="w-8 h-8 bg-[#6C63FF] rounded-lg flex items-center justify-center text-white font-bold text-sm">?</div>
-        <span className="font-bold text-base text-[#2d2b55]">DevQuiz</span>
+  	<img src="/logo.png" alt="logo" className="w-32 h-10 object-contain" />
       </div>
 
       <nav className="flex-1 py-4">
