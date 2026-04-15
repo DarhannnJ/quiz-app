@@ -12,7 +12,7 @@ export default function Results({ result, onRestart, onHistory }) {
   }
 
   return (
-    <div className="max-w-md mx-auto pt-10 p-6 text-center">
+    <div className="max-w-md mx-auto pt-8 p-4 text-center">
       <div className="text-6xl mb-4">{emoji}</div>
       <h2 className="text-2xl font-bold mb-1">Результат</h2>
       <p className="text-5xl font-bold text-blue-400 mb-1">{result.score}/{result.total}</p>
