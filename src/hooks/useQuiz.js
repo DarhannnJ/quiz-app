@@ -15,6 +15,8 @@ export function useQuiz(config, onFinish) {
   const [comboMsg, setComboMsg] = useState('')
   const [timePerQuestion, setTimePerQuestion] = useState([])
   const questionStartTime = useRef(Date.now())
+  const currentRef = useRef(0)
+  const handleAnswerRef = useRef(null)
   const timerRef = useRef(null)
   const startTime = useRef(Date.now())
   
@@ -63,7 +65,7 @@ export function useQuiz(config, onFinish) {
     if (loading || selected !== null) return
     timerRef.current = setInterval(() => {
       setTimeLeft(t => {
-        if (t <= 1) { handleAnswer(null); return 15 }
+        if (t <= 1) { handleAnswerRef.current(null); return 15 }
         return t - 1
       })
     }, 1000)
@@ -107,12 +109,13 @@ export function useQuiz(config, onFinish) {
   	  totalTime: Math.round((Date.now() - startTime.current) / 1000)
 	})
       } else {
-        setCurrent(c => c + 1)
-        setSelected(null)
-        setTimeLeft(15)
+        const next = current + 1
+	currentRef.current = next
+	setCurrent(next)
       }
     }, 1000)
   }
 
   return { questions, current, score, selected, timeLeft, loading, error, streak, comboMsg, handleAnswer }
+  handleAnswerRef.current = handleAnswer
 }
