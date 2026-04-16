@@ -1,16 +1,63 @@
-# React + Vite
+# 🧠 Quiz App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> 🏆 **Hackathon Project:** Built during a 2026 hackathon.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+An interactive quiz web application that tests your knowledge across various topics. Users answer questions one by one and get their final score at the end.
 
-## React Compiler
+## Key Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- ⚡ **Fast & Responsive:** Smooth SPA experience powered by React + Vite with instant page transitions
+- 🎨 **Clean UI:** Fully responsive interface built with Tailwind CSS — looks great on mobile and desktop
+- 📊 **Score Tracking:** Tracks correct answers throughout the quiz and displays a final results screen
+- 🔄 **Restart Anytime:** Users can retake the quiz from the results screen without refreshing the page
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Frontend:** React, Vite
+- **Styling:** Tailwind CSS, PostCSS
+- **Linting:** ESLint
+
+## Getting Started
+
+To run this project locally on your machine:
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/DarhannnJ/quiz-app.git
+   ```
+
+2. **Navigate into the project directory:**
+   ```bash
+   cd quiz-app
+   ```
+
+3. **Install the dependencies:**
+   ```bash
+   npm install
+   ```
+
+4. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
+
+5. Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+## Project Structure
+
+```
+quiz-app/
+├── public/          # Static assets
+├── src/             # React source code
+│   ├── components/  # UI components
+│   └── main.jsx     # App entry point
+├── img/             # Images
+├── index.html
+└── package.json
+```
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).
