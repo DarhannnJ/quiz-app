@@ -1,6 +1,6 @@
 # 🧠 Quiz App
 
-> 🏆 **Hackathon Project:** Built during a 2026 hackathon.
+> ⚡ **Solo Build:** Built solo in under 3 hours (2026).
 
 ## Overview
 
